@@ -2,7 +2,8 @@
 server.export <- function(x,
                           filename=NULL,
                           title=NULL,
-                          format="CSV") 
+                          format="CSV",
+                          rownames=FALSE) 
 {
   .DF <- x
   .FN <- filename
@@ -32,12 +33,19 @@ server.export <- function(x,
   .FNAME <- sprintf("exports/%s.%s", .FN, .FM)
   .URL <- sprintf("<a href=\"%s.%s\" class=\"RExport\">%s</a>", .FN, .FM, .TT)
   # ---------------------------------------------------------------------------
-  if (.FM == "CSV") {
-    write.table(.DF, .FNAME, na="", sep=";", fileEncoding = "UTF-8")
+  if (.FM == "csv") {
+    write.table(.DF, .FNAME, na="", sep=";",
+                fileEncoding = "UTF-8",
+                row.names = rownames)
     cat(.URL)
   }
-  if (.FM == "RDS") {
+  if (.FM == "Rds") {
     saveRDS(.DF, file = .FNAME)
     cat(.URL)
   }
+  if (.FM == "xlsx") {
+    write.xlsx(.DF, file = .FNAME, row.names = rownames)
+    cat(.URL)
+  }
+  
 }
