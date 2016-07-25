@@ -2,7 +2,7 @@
 server.export <- function(x,
                           filename=NULL,
                           title=NULL,
-                          format="CSV",
+                          format="csv",
                           rownames=FALSE) 
 {
   .DF <- x
@@ -39,7 +39,7 @@ server.export <- function(x,
                 row.names = rownames)
     cat(.URL)
   }
-  if (.FM == "Rds") {
+  if (.FM == "rds") {
     saveRDS(.DF, file = .FNAME)
     cat(.URL)
   }

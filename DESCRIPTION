@@ -1,9 +1,11 @@
 Package: RServerUtils
 Type: Package
-Title: What the package does (short line)
-Version: 1.1
-Date: 2016-06-16
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Utilitaires pour le serveur R
+Version: 1.2
+Date: 2016-07-25
+Author: jp.decorps@epiconcept.com
+Maintainer: <jp.decorps@epiconcept.com>
+Description: Utilitaires pour le serveur R
+License: GPL-3
+Depends: xlsx
+Import: xlsx
