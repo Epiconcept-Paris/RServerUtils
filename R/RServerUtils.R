@@ -44,7 +44,7 @@ server.export <- function(x,
     cat(.URL)
   }
   if (.FM == "xlsx") {
-    write.xlsx(.DF, file = .FNAME, row.names = rownames)
+    write.xlsx(.DF, file = .FNAME, row.names = rownames, showNA = FALSE)
     cat(.URL)
   }
   
