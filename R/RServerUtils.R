@@ -49,3 +49,66 @@ server.export <- function(x,
   }
   
 }
+
+figure.export <- function(x,
+                          filename=NULL,
+                          title=NULL,
+                          format="png") {
+
+  .FN <- filename
+  .TT <- title
+
+  # If filename is NULL -> ERROR
+  # ---------------------------------------------------------------------------
+  if (is.null(.FN)) {
+    stop("You MUST provide a filename (without extension)")
+  }
+  
+  if (is.null(.TT)) {
+    .TT <- sprintf("exports/%s.%s", .FN, .FM)
+  }
+  
+  # We are testing if 'exports' directory exists
+  # If no, we create it
+  # ---------------------------------------------------------------------------
+  if (!dir.exists("exports")) {
+    dir.create("exports")
+  }
+  
+  URLFMT <- "<a href=\"%s.%s\" class=\"RExport\">%s: %s</a><br />"
+  if (is.null(x)) {
+    for (fmt in c(format)) {
+      fname <- sprintf("exports/%s.%s", filename, fmt)
+      if (fmt == "png") {
+        dev.copy(png, fname); dev.off()
+        .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
+        cat(.URL)
+      }
+      if (fmt == "jpg") {
+        dev.copy(jpeg, fname); dev.off()
+        .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
+        cat(.URL)
+      }
+      if (fmt == "pdf") {
+        dev.copy(pdf, fname); dev.off()
+        .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
+        cat(.URL)
+      }
+      if (fmt == "svg") {
+        dev.copy(svg, fname); dev.off()
+        .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
+        cat(.URL)
+      }
+    }
+  }
+  else {
+    if (class(x)[1] == 'gg') {
+      for (fmt in c(format)) {
+        fname <- sprintf("exports/%s.%s", filename, fmt)
+        ggsave(fname, plot = x, device = fmt)
+        .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
+        cat(.URL)
+      }
+    }
+  }
+}
