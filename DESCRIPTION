@@ -1,11 +1,11 @@
 Package: RServerUtils
 Type: Package
 Title: Utilitaires pour le serveur R
-Version: 1.4
-Date: 2016-07-25
+Version: 1.5
+Date: 2016-10-12
 Author: jp.decorps@epiconcept.com
 Maintainer: <jp.decorps@epiconcept.com>
 Description: Utilitaires pour le serveur R
 License: GPL-3
-Depends: xlsx
-Import: xlsx
+Depends: xlsx, ggplot2
+Import: xlsx, ggplot2
