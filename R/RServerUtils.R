@@ -53,10 +53,14 @@ server.export <- function(x,
 figure.export <- function(x,
                           filename=NULL,
                           title=NULL,
-                          format="png") {
+                          format="png",
+                          plot.width=1120,
+                          plot.height=630) {
 
   .FN <- filename
   .TT <- title
+  .W <- plot.width
+  .H <- plot.height
 
   # If filename is NULL -> ERROR
   # ---------------------------------------------------------------------------
@@ -80,22 +84,22 @@ figure.export <- function(x,
     for (fmt in c(format)) {
       fname <- sprintf("exports/%s.%s", filename, fmt)
       if (fmt == "png") {
-        dev.copy(png, fname); dev.off()
+        dev.copy(png, fname, width=.W, height=.H); dev.off()
         .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
         cat(.URL)
       }
       if (fmt == "jpg") {
-        dev.copy(jpeg, fname); dev.off()
+        dev.copy(jpeg, fname, width=.W, height=.H); dev.off()
         .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
         cat(.URL)
       }
       if (fmt == "pdf") {
-        dev.copy(pdf, fname); dev.off()
+        dev.copy(pdf, fname, width=.W, height=.H); dev.off()
         .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
         cat(.URL)
       }
       if (fmt == "svg") {
-        dev.copy(svg, fname); dev.off()
+        dev.copy(svg, fname, width=.W, height=.H); dev.off()
         .URL <- sprintf(URLFMT, .FN, fmt, fmt, .TT)
         cat(.URL)
       }

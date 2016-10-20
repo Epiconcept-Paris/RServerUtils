@@ -8,7 +8,9 @@
 }
 \usage{
 figure.export(x, filename=NULL, title=NULL, 
-              format=c("png","pdf","jpg","svg")) 
+              format=c("png","pdf","jpg","svg")
+              plot.width=1120,
+              plot.height=630) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,6 +18,8 @@ figure.export(x, filename=NULL, title=NULL,
   \item{filename}{ - a string, the file name without extension}
   \item{Title}{ - a string, the text of the link}
   \item{format}{ - a vector string, the file format c("png","pdf","jpg","csv")}
+  \item{plot.width}{ - an integer, width of plot, only used by standard plots not ggplot}
+  \item{plot.height}{ - an integer, height of plot, only used by standard plots not ggplot}
 }
 \details{
 Files are exported in the subdirectory "exports". If this directory does
