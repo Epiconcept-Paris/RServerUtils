@@ -1,5 +1,4 @@
-import(ggplot2,
-       xlsx)
+import("ggplot2", "xlsx")
 
 export(
   server.export,
